@@ -1,0 +1,14 @@
+const configToDeploy = {
+	USER_HOTMAIL_SMTP : process.env.USER_HOTMAIL_SMTP,
+	PASS_HOTMAIL_SMTP : process.env.PASS_HOTMAIL_SMTP,
+	USER_DATABASE : process.env.USER_DATABASE,
+	PASSWORD_DATABASE : process.env.PASSWORD_DATABASE,
+	NAME_DATABASE : process.env.NAME_DATABASE,
+	APLICATION_PASSWORD : process.env.APLICATION_PASSWORD,
+	PUBLIC_KEY:process.env.PUBLIC_KEY,
+	PRIVATE_KEY:process.env.PRIVATE_KEY
+}
+
+
+module.exports= configToDeploy
+
