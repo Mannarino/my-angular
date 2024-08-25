@@ -20,7 +20,7 @@ app.use(session({
   secret: 'mi_secreto', // Una cadena secreta para firmar la cookie de la sesión
   resave: false,        // No guardar la sesión en el almacenamiento si no se modifica
   saveUninitialized: false, // Guardar una sesión nueva pero no modificada
-  cookie: { secure: false ,maxAge: 1000 * 60 * 60 * 24 * 14 } // Solo enviar cookies a través de conexiones HTTPS si es true
+  cookie: { secure: false ,maxAge: 1000 * 60 * 60 * 24 * 14 , sameSite: 'None',secure:true} // Solo enviar cookies a través de conexiones HTTPS si es true
 }));
 
 app.use(express.json());
@@ -128,6 +128,7 @@ app.post('/login', (req, res) => {
       httpOnly: true,  // La cookie no puede ser accedida por JavaScript del lado del cliente
       signed: true,    // Firmar la cookie para mayor seguridad
       maxAge: 60 * 60 * 1000 // Expira en 1 hora
+      , sameSite: 'None',secure:true
     });
 
     // Responder con éxito
