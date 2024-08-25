@@ -6,7 +6,8 @@ const configToDeploy = {
 	NAME_DATABASE : process.env.NAME_DATABASE,
 	APLICATION_PASSWORD : process.env.APLICATION_PASSWORD,
 	PUBLIC_KEY:process.env.PUBLIC_KEY,
-	PRIVATE_KEY:process.env.PRIVATE_KEY
+	PRIVATE_KEY:process.env.PRIVATE_KEY,
+	ADMIN_PASSWORD:process.env.ADMIN_PASSWORD,
 }
 
 
