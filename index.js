@@ -59,7 +59,12 @@ app.post('/clicks', (req, res) => {
     // Si no, inicializar el contador y la lista de timestamps para el clic
     req.session.clicks[click] = { count: 1, timestamps: [new Date().toLocaleString()] };
   }
-
+  res.cookie('testCookie', 'testValue', {
+  httpOnly: true,
+  secure: true,
+  sameSite: 'None',
+  maxAge: 60 * 60 * 1000, // 1 hora
+});
   // Enviar una respuesta con el estado actual de los clics
   // Responder con éxito
     res.status(200).json({ message: 'Login exitoso' });
