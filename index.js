@@ -25,7 +25,7 @@ app.use(session({
             sameSite: 'None',
             httpOnly: true} // Solo enviar cookies a través de conexiones HTTPS si es true
 }));
-app.use(cookieParser('SECRET_KEY'));
+
 
 
 
