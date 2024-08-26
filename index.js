@@ -8,7 +8,7 @@ const config =obtenerValoresDeEntorno()
 const session = require('express-session');
 
 const verifyToken = require('./middelwares/access.js');
-app.use(cors({ credentials: true, origin: 'https://moises-mannarino.netlify.app/' }));
+app.use(cors({ credentials: true, origin: 'https://moises-mannarino.netlify.app' }));
 
 app.use(session({
   name: 'myCustomSessionId',
