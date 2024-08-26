@@ -11,7 +11,6 @@ const verifyToken = require('./middelwares/access.js');
 app.use(cors({ credentials: true, origin: 'https://moises-mannarino.netlify.app' }));
 app.use(cookieParser('mi_secreto'));
 app.use(session({
-  name: 'myCustomSessionId',
   store:  MongoStore.create({
     mongoUrl: `mongodb+srv://${config.USER_DATABASE}:${config.PASSWORD_DATABASE}@irina.rnbys.mongodb.net/${config.NAME_DATABASE}?retryWrites=true&w=majority`,
     collectionName: 'sessions', // El nombre de la colección en MongoDB
@@ -88,7 +87,16 @@ app.get('/', (req, res) => {
 
   // Contar la cantidad de visitas
   const visitCount = req.session.visits.length;
+  
+  const sessionId = req.sessionID;
 
+  // Enviar la cookie manualmente
+  res.cookie('connect.sid', sessionId, {
+    httpOnly: true,   // Solo accesible por HTTP(S)
+    secure: true,     // Solo se envía a través de HTTPS
+    sameSite: 'None', // Para permitir solicitudes cross-site
+    maxAge: 1000 * 60 * 60 * 24 * 14 // 14 días
+  });
   // Enviar la respuesta al usuario
   // Responder con éxito
     res.status(200).json({ message: 'Login exitoso' });
