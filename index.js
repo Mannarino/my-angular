@@ -23,7 +23,7 @@ app.use(session({
   secret: 'mi_secreto', // Una cadena secreta para firmar la cookie de la sesión
   resave: false,        // No guardar la sesión en el almacenamiento si no se modifica
   saveUninitialized: false, // Guardar una sesión nueva pero no modificada
-  cookie: { secure: true ,maxAge: 1000 * 60 * 60 * 24 * 14 , sameSite: 'None',
+  cookie: { secure: true ,maxAge: 1000 * 60 * 60 * 24 * 14 , 
   httpOnly: true} // Solo enviar cookies a través de conexiones HTTPS si es true
 }));
 
