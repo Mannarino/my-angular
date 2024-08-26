@@ -11,6 +11,7 @@ const verifyToken = require('./middelwares/access.js');
 app.use(cors({ credentials: true, origin: 'https://moises-mannarino.netlify.app' }));
 app.use(cookieParser('mi_secreto'));
 app.use(session({
+  name:'connect.sid',
   store:  MongoStore.create({
     mongoUrl: `mongodb+srv://${config.USER_DATABASE}:${config.PASSWORD_DATABASE}@irina.rnbys.mongodb.net/${config.NAME_DATABASE}?retryWrites=true&w=majority`,
     collectionName: 'sessions', // El nombre de la colección en MongoDB
