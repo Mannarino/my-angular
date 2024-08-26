@@ -10,10 +10,6 @@ const cookieParser = require('cookie-parser');
 const verifyToken = require('./middelwares/access.js');
 app.use(cors({ credentials: true, origin: 'https://moises-mannarino.netlify.app' }));
 
-
-app.use(cookieParser('SECRET_KEY'));
-
-
 app.use(session({
   store:  MongoStore.create({
     mongoUrl: `mongodb+srv://${config.USER_DATABASE}:${config.PASSWORD_DATABASE}@irina.rnbys.mongodb.net/${config.NAME_DATABASE}?retryWrites=true&w=majority`,
@@ -28,6 +24,10 @@ app.use(session({
             sameSite: 'None',
             httpOnly: true} // Solo enviar cookies a través de conexiones HTTPS si es true
 }));
+app.use(cookieParser('SECRET_KEY'));
+
+
+
 
 app.use(express.json());
 
