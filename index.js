@@ -21,13 +21,18 @@ app.use(session({
   secret: 'mi_secreto', // Una cadena secreta para firmar la cookie de la sesión
   resave: false,        // No guardar la sesión en el almacenamiento si no se modifica
   saveUninitialized: false, // Guardar una sesión nueva pero no modificada
-  cookie: { secure: true ,maxAge: 1000 * 60 * 60 * 24 * 14 , sameSite: 'None'} // Solo enviar cookies a través de conexiones HTTPS si es true
+  cookie: { secure: true ,maxAge: 1000 * 60 * 60 * 24 * 14 , sameSite: 'None',
+  httpOnly: true} // Solo enviar cookies a través de conexiones HTTPS si es true
 }));
 
 app.use(express.json());
 
 
 
+app.get('/set-cookie-manual', (req, res) => {
+  res.setHeader('Set-Cookie', 'myCookie=myValue; HttpOnly; Secure; SameSite=None');
+  res.status(200).json({ message: 'Cookie enviada manualmente' });
+});
 
 
 
