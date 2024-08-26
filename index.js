@@ -8,7 +8,8 @@ const config =obtenerValoresDeEntorno()
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const verifyToken = require('./middelwares/access.js');
-app.use(cors(app.use(cors({ credentials: true, origin: true }));
+app.use(cors({ credentials: true, origin: 'https://moises-mannarino.netlify.app' }));
+
 
 app.use(cookieParser('SECRET_KEY'));
 
