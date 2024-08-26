@@ -6,10 +6,10 @@ const MongoStore = require('connect-mongo');
 const obtenerValoresDeEntorno = require('./environment/getEnvironment.js')
 const config =obtenerValoresDeEntorno()
 const session = require('express-session');
-
+const cookieParser = require('cookie-parser');
 const verifyToken = require('./middelwares/access.js');
 app.use(cors({ credentials: true, origin: 'https://moises-mannarino.netlify.app' }));
-
+app.use(cookieParser('mi_secreto'));
 app.use(session({
   name: 'myCustomSessionId',
   store:  MongoStore.create({
@@ -134,8 +134,8 @@ function generateToken(username) {
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
 
-  // Verificar si el usuario es "moises" y la contraseña es "11111123"
-  if (username === 'moises' && password === '11111123') {
+  // Verificar si el usuario es "moises" y la contraseña es 
+  if (username === 'moises' && password === config.ADMIN_PASSWORD) {
     // Generar un token
     const token = generateToken(username);
 
