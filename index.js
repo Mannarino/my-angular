@@ -6,7 +6,7 @@ const MongoStore = require('connect-mongo');
 const obtenerValoresDeEntorno = require('./environment/getEnvironment.js')
 const config =obtenerValoresDeEntorno()
 const session = require('express-session');
-const cookieParser = require('cookie-parser');
+
 const verifyToken = require('./middelwares/access.js');
 app.use(cors({ credentials: true, origin: 'https://moises-mannarino.netlify.app' }));
 
